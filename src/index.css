@@ -15,7 +15,6 @@
 html, body, #root {
   width: 100%;
   min-height: 100dvh;
-  overflow-x: hidden;
 }
 
 body {
@@ -35,7 +34,6 @@ body {
   align-items: center;
   justify-content: flex-start;
   padding: 20px 16px;
-  overflow: hidden;
 }
 
 /* Background: deep radial gradient + subtle noise texture */

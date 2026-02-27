@@ -110,6 +110,56 @@ export function GameScreen({ onMenu }: GameScreenProps) {
       }
     });
 
+    // Auto-scroll logic variables
+    let scrollAnimationFrame: number | null = null;
+    let isDragging = false;
+    let currentMouseY = 0;
+
+    const handleAutoScroll = () => {
+      if (!isDragging) return;
+
+      const edgeThreshold = 60; // Distance from edge to trigger scroll
+      const scrollSpeed = 8; // Pixels per frame
+      const windowHeight = window.innerHeight;
+
+      // Scroll up
+      if (currentMouseY < edgeThreshold) {
+        window.scrollBy(0, -scrollSpeed);
+      }
+      // Scroll down
+      else if (currentMouseY > windowHeight - edgeThreshold) {
+        window.scrollBy(0, scrollSpeed);
+      }
+
+      scrollAnimationFrame = requestAnimationFrame(handleAutoScroll);
+    };
+
+    const handleMouseMove = (e: MouseEvent | TouchEvent) => {
+      if (!isDragging) return;
+      if ('touches' in e) {
+        currentMouseY = e.touches[0].clientY;
+      } else {
+        currentMouseY = e.clientY;
+      }
+    };
+
+    drake.on('drag', () => {
+      isDragging = true;
+      document.addEventListener('mousemove', handleMouseMove, { passive: true });
+      document.addEventListener('touchmove', handleMouseMove, { passive: true });
+      scrollAnimationFrame = requestAnimationFrame(handleAutoScroll);
+    });
+
+    drake.on('dragend', () => {
+      isDragging = false;
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('touchmove', handleMouseMove);
+      if (scrollAnimationFrame !== null) {
+        cancelAnimationFrame(scrollAnimationFrame);
+        scrollAnimationFrame = null;
+      }
+    });
+
     drake.on('cancel', (el, _container, source) => {
       if (isRevertingDrop.current) return; // Ignore fake cancels from our DOM revert!
 
