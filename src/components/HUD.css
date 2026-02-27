@@ -1,0 +1,106 @@
+/* HUD.css */
+
+.hud {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.hud__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.hud__badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #6c8be8, #9d6bdf);
+  border-radius: 8px;
+  padding: 4px 10px;
+  min-width: 44px;
+}
+
+.hud__badge-label {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+.hud__badge-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hud__level-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+
+.hud__center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hud__progress-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.hud__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00e5a0, #5cb8ff);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.hud__pct {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #00e5a0;
+  min-width: 30px;
+  text-align: right;
+}
+
+.hud__right {
+  display: flex;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.hud__stat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hud__stat-icon {
+  font-size: 0.85rem;
+  opacity: 0.55;
+}
+
+.hud__stat-value {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  font-variant-numeric: tabular-nums;
+}

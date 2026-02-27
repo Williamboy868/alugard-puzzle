@@ -1,0 +1,62 @@
+/* PieceTray.css */
+
+.piece-tray {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  min-height: 160px;
+}
+
+.piece-tray__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.piece-tray__count {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.piece-tray__scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 300px;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 180, 255, 0.3) transparent;
+}
+
+.piece-tray__scroll::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+.piece-tray__scroll::-webkit-scrollbar-thumb {
+  background: rgba(120, 180, 255, 0.3);
+  border-radius: 2px;
+}
+
+.piece-tray__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: flex-start;
+  padding: 4px;
+  min-height: 80px;
+  /* alugard-drop drop zone styling when active */
+}
+
+/* When a piece is hovering over the tray (alugard-drop shadow) */
+.piece-tray__slot {
+  display: inline-block;
+  flex-shrink: 0;
+}

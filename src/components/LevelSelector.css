@@ -1,0 +1,151 @@
+/* LevelSelector.css */
+
+.level-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.level-selector__header {
+  text-align: center;
+}
+
+.level-selector__title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+
+.level-selector__title-gradient {
+  background: linear-gradient(120deg, #7eb5ff, #b86ef5, #ff6eb4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.level-selector__title-sub {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.level-selector__subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+  font-weight: 400;
+  max-width: 400px;
+}
+
+.level-selector__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+/* Level card */
+.level-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  text-align: left;
+  padding: 0;
+  color: #fff;
+  font-family: inherit;
+}
+
+.level-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(100, 160, 255, 0.2);
+  border-color: rgba(120, 180, 255, 0.35);
+}
+
+.level-card:hover .level-card__overlay {
+  opacity: 1;
+}
+
+.level-card__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.level-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.level-card:hover .level-card__image {
+  transform: scale(1.06);
+}
+
+.level-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.level-card__play {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.level-card__body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.level-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.level-card__number {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.level-card__stars {
+  font-size: 0.6rem;
+  color: #f5c518;
+  letter-spacing: -1px;
+}
+
+.level-card__name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.level-card__desc {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+  line-height: 1.4;
+}

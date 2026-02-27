@@ -1,0 +1,34 @@
+/* GameBoard.css */
+
+.game-board {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #0d0d1a;
+  box-shadow:
+    0 0 60px rgba(80, 150, 255, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.game-board__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.game-board__canvas--ghost {
+  z-index: 0;
+}
+
+.game-board__canvas--border {
+  z-index: 2;
+}
+
+.game-board__cell-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}

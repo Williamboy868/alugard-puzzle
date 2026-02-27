@@ -1,0 +1,174 @@
+/* WinScreen.css */
+
+.win-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: win-screen-in 0.4s ease;
+}
+
+@keyframes win-screen-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.win-screen__card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(20, 20, 45, 0.97), rgba(10, 10, 30, 0.97));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 40px 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  animation: card-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  animation-delay: 0.1s;
+}
+
+@keyframes card-pop {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.win-screen__crown {
+  font-size: 3.5rem;
+  animation: bounce 0.8s ease 0.4s both;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(-20px); opacity: 0; }
+  60% { transform: translateY(8px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.win-screen__title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(120deg, #7dd3fc, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.win-screen__subtitle {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: -8px 0 0;
+}
+
+.win-screen__stats {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 16px 24px;
+  width: 100%;
+  justify-content: center;
+}
+
+.win-screen__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.win-screen__stat-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.win-screen__stat-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+}
+
+.win-screen__divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.win-screen__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.win-screen__btn {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+.win-screen__btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.win-screen__btn--primary {
+  background: linear-gradient(135deg, #6c8be8, #9d6bdf);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(108, 139, 232, 0.4);
+}
+
+.win-screen__btn--secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.win-screen__btn--ghost {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.82rem;
+}
+
+/* Confetti */
+.win-screen__confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.win-screen__confetti-piece {
+  position: absolute;
+  top: -20px;
+  left: calc(var(--i) * 5.5%);
+  width: 8px;
+  height: 14px;
+  border-radius: 2px;
+  background: hsl(calc(var(--i) * 18deg), 85%, 65%);
+  animation: confetti-fall calc(1.8s + var(--i) * 0.12s) ease-in calc(var(--i) * 0.07s) both;
+}
+
+@keyframes confetti-fall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}

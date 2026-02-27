@@ -1,0 +1,35 @@
+/* PuzzlePiece.css */
+
+.puzzle-piece {
+  display: block;
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: transform;
+  transition: filter 0.15s ease, transform 0.1s ease;
+  outline: none;
+}
+
+.puzzle-piece:hover {
+  filter: brightness(1.12) drop-shadow(0 4px 12px rgba(120, 200, 255, 0.35));
+  transform: scale(1.03);
+  z-index: 10;
+}
+
+.puzzle-piece--home {
+  filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.55));
+}
+
+/* alugard-drop mirror — the cursor-following clone */
+.ad-mirror {
+  opacity: 0.88 !important;
+  filter: drop-shadow(0 8px 24px rgba(120, 200, 255, 0.65)) brightness(1.08) !important;
+  z-index: 9999 !important;
+  cursor: grabbing !important;
+  transition: none !important;
+}
+
+/* The original piece during drag — fade it a bit */
+.ad-transit {
+  opacity: 0.35 !important;
+  pointer-events: none !important;
+}
