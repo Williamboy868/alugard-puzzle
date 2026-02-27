@@ -57,6 +57,17 @@ export function GameScreen({ onMenu }: GameScreenProps) {
   // Timer
   useGameTimer(state.phase, dispatch);
 
+  // Image Loading State
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+
+  useEffect(() => {
+    setImageLoaded(false);
+    const img = new Image();
+    img.src = config?.imagePath ?? '/images/placeholder.jpg';
+    img.onload = () => setImageLoaded(true);
+    img.onerror = () => setImageLoaded(true); // Fallback so we don't hang forever
+  }, [config?.imagePath]);
+
   // Flag to differentiate genuine user cancels (spills) from our DOM revert
   const isRevertingDrop = useRef(false);
 
@@ -177,32 +188,42 @@ export function GameScreen({ onMenu }: GameScreenProps) {
       />
 
       <div className="game-screen__board-wrap">
-        <GameBoard
-          cells={cells}
-          cellMap={cellMap}
-          pieces={state.pieces}
-          occupancyMap={state.occupancyMap}
-          pieceSize={pieceSize}
-          sideLength={sideLength}
-          imageUrl={imageUrl}
-          boardWidth={BOARD_W}
-          boardHeight={BOARD_H}
-          active={state.phase === 'solving' || state.phase === 'scrambled'}
-          dispatch={dispatch}
-          onCellElMap={handleCellElMap}
-        />
+        {!imageLoaded && (
+          <div className="game-screen__loading">
+            <div className="game-screen__spinner" />
+            <span>Loading image...</span>
+          </div>
+        )}
+        <div style={{ visibility: imageLoaded ? 'visible' : 'hidden', display: 'contents' }}>
+          <GameBoard
+            cells={cells}
+            cellMap={cellMap}
+            pieces={state.pieces}
+            occupancyMap={state.occupancyMap}
+            pieceSize={pieceSize}
+            sideLength={sideLength}
+            imageUrl={imageUrl}
+            boardWidth={BOARD_W}
+            boardHeight={BOARD_H}
+            active={state.phase === 'solving' || state.phase === 'scrambled'}
+            dispatch={dispatch}
+            onCellElMap={handleCellElMap}
+          />
+        </div>
       </div>
 
-      <PieceTray
-        pieces={pieces}
-        cellMap={cellMap}
-        pieceSize={pieceSize}
-        imageUrl={imageUrl}
-        imageBoardWidth={BOARD_W}
-        imageBoardHeight={BOARD_H}
-        dispatch={dispatch}
-        onTrayEl={handleTrayEl}
-      />
+      <div style={{ visibility: imageLoaded ? 'visible' : 'hidden', display: 'contents' }}>
+        <PieceTray
+          pieces={pieces}
+          cellMap={cellMap}
+          pieceSize={pieceSize}
+          imageUrl={imageUrl}
+          imageBoardWidth={BOARD_W}
+          imageBoardHeight={BOARD_H}
+          dispatch={dispatch}
+          onTrayEl={handleTrayEl}
+        />
+      </div>
 
       <button className="game-screen__menu-btn" onClick={onMenu}>
         ← Menu

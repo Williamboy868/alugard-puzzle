@@ -48,6 +48,7 @@
 .piece-tray__grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 6px;
   align-items: flex-start;
   padding: 4px;

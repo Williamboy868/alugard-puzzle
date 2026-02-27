@@ -104,3 +104,25 @@
   color: rgba(255, 255, 255, 0.85);
   font-variant-numeric: tabular-nums;
 }
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 600px) {
+  .hud {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .hud__left {
+    justify-content: center;
+  }
+
+  .hud__center {
+    width: 100%;
+  }
+
+  .hud__right {
+    justify-content: center;
+  }
+}
